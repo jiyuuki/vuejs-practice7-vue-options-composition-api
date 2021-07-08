@@ -61,7 +61,7 @@ export default {
             console.log('addItem')
             this.items.push({value: this.newItem})
             this.newItem = ''; 
-            TODO:
+            // TODO:
             // up itemCount if item is already existe
             // addItem if newItem is not exsted
             console.log(this.items)
