@@ -65,26 +65,27 @@
                     let indexNewItem = items.value.findIndex(
                     (item) => item.value === newItem.value
                     );
-                    items.value[indexNewItem].count++;
+                    items.value[indexNewItem].count++
                 } else {
-                    items.value.push({ value: newItem.value, count: 1 });
+                    items.value.push({ value: newItem.value, count: 1 })
                 }
-                newItem.value = "";
+                newItem.value = ""
             }
             let deleteItem = (index) => {
-                items.value.splice(index, 1);
+                items.value.splice(index, 1)
             }
             
             // COMPUTED
             let getItemsCount = computed(() => {
-                return items.value.length;
+                return items.value.length
             })
 
             // WATCHERS
             watch(newItem, (newValue) => {
                 if (newValue === "dogs are better than cats") {
-                    alert("shut up");
+                    alert("shut up")
                 }
+                newItem.value = ""
             });
 
             return {

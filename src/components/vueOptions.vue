@@ -65,7 +65,7 @@
                 }else{
                     this.items.push({value: this.newItem.toUpperCase(), count: 1})
                 }
-                this.newItem = ""; 
+                this.newItem = ""
             },
             deleteItem (index) {
                 this.items.splice(index, 1)
@@ -76,6 +76,7 @@
                 if(newValue === "Dogs are better than cats"){
                     alert("shut up")
                 }
+                this.newItem = ""
             }
         }
     }
