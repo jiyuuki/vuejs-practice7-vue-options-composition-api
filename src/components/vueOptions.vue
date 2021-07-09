@@ -30,8 +30,6 @@
 </template>
 
 <script>
-    // TODO: 
-    // USE watcher for stoping add some words
     export default {
         name: "vueOptions",
         data () {
@@ -39,15 +37,15 @@
                 newItem: "",
                 items: [
                     {
-                        value: "One",
+                        value: "ONE",
                         count: 1
                     },
                     {
-                        value: "Two",
+                        value: "TWO",
                         count: 1
                     },
                     {
-                        value: "bla bla",
+                        value: "BLA BLA",
                         count: 1
                     }
                 ]
@@ -61,18 +59,23 @@
         },
         methods: {
             addItem () {
-                // TODO: 
-                // Do verification on Lowercase and add values on Capitalize
-                if(this.items.some(item => item.value === this.newItem)){
-                    let indexNewItem = this.items.findIndex(item => item.value === this.newItem)
+                if(this.items.some(item => item.value.toLowerCase() === this.newItem.toLowerCase())){
+                    let indexNewItem = this.items.findIndex(item => item.value.toLowerCase() === this.newItem.toLowerCase())
                     this.items[indexNewItem].count++
                 }else{
-                    this.items.push({value: this.newItem, count: 1})
+                    this.items.push({value: this.newItem.toUpperCase(), count: 1})
                 }
                 this.newItem = ""; 
             },
             deleteItem (index) {
                 this.items.splice(index, 1)
+            }
+        },
+        watch:{
+            newItem (newValue) {
+                if(newValue === "Dogs are better than cats"){
+                    alert("shut up")
+                }
             }
         }
     }
