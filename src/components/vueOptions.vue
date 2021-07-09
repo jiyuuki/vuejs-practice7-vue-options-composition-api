@@ -21,9 +21,9 @@
                 v-for="(item, index) in items"
                 :key="index"
                 >
-                <span class="badge badge-primary badge-pill">{{ itemCount }}</span>
+                <span class="badge badge-primary badge-pill">{{ item.count }}</span>
                 {{ item.value }}
-                <span class="badge badge-primary badge-pill" @click="deleteItem">X</span>
+                <span class="badge badge-primary badge-pill" @click="deleteItem(index)">X</span>
             </li>
         </ul>
     </div>
@@ -39,13 +39,16 @@ export default {
             newItem: "",
             items: [
                 {
-                    value: "One"
+                    value: "One",
+                    count: 1
                 },
                 {
-                    value: "Two"
+                    value: "Two",
+                    count: 1
                 },
                 {
-                    value: "bla bla"
+                    value: "bla bla",
+                    count: 1
                 }
             ]
 
@@ -58,18 +61,16 @@ export default {
     },
     methods: {
         addItem () {
-            console.log('addItem')
-            this.items.push({value: this.newItem})
-            this.newItem = ''; 
-            // TODO:
-            // up itemCount if item is already existe
-            // addItem if newItem is not exsted
-            console.log(this.items)
-            console.log(this.newItem)
-            console.log(this.itemsCount)
+            if(this.items.some(item => item.value === this.newItem)){
+                let indexNewItem = this.items.findIndex(item => item.value === this.newItem)
+                this.items[indexNewItem].count++
+            }else{
+                this.items.push({value: this.newItem, count: 1})
+            }
+            this.newItem = ""; 
         },
-        deleteItem () {
-            console.log('deleteItem')
+        deleteItem (index) {
+            this.items.splice(index, 1)
         }
     }
 }
