@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <h5 class="card-title">
-            Vue options - you have {{ getItemsCount }} item added
+            Vue Composition Api - you have {{ getItemsCount }} item added
         </h5>
         <div class="input-group mb-3">
             <input

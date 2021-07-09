@@ -1,15 +1,30 @@
 <template>
-    <vueOptions />
+    <select v-model="componentName">
+        <option value="vueOptions">Vue Options Api</option>
+        <option value="vueComposition">Vue Composition Api</option>
+    </select>
+
+    <keep-alive>
+        <component :is="componentName"></component>
+    </keep-alive>
+
 </template>
 
 <script>
-import vueOptions from './components/vueOptions.vue'
-// import vueComposition from "./components/vueComposition.vue";
+import vueOptions from "./components/vueOptions.vue"
+import vueComposition from "./components/vueComposition.vue"
+
 export default {
+    name: "App",
     components: {
         vueOptions,
-        // vueComposition,
-    },
+        vueComposition,
+    }, 
+    data () {
+        return {
+            componentName: "vueOptions"
+        }
+    }
 };
 </script>
 
