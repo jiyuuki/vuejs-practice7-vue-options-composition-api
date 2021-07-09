@@ -84,8 +84,8 @@
             watch(newItem, (newValue) => {
                 if (newValue === "dogs are better than cats") {
                     alert("shut up")
+                    newItem.value = ""
                 }
-                newItem.value = ""
             });
 
             return {

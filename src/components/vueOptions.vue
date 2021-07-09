@@ -5,8 +5,8 @@
             <input 
                 type="text" 
                 class="form-control" 
-                placeholder="Item" a
-                ria-label="item" 
+                placeholder="Item" 
+                aria-label="item" 
                 aria-describedby="basic-addon2"
                 @keyup.enter="addItem"
                 v-model="newItem"
@@ -73,10 +73,10 @@
         },
         watch:{
             newItem (newValue) {
-                if(newValue === "Dogs are better than cats"){
+                if(newValue === "dogs are better than cats"){
                     alert("shut up")
+                    this.newItem = ""
                 }
-                this.newItem = ""
             }
         }
     }
