@@ -1,14 +1,15 @@
 <template>
-    <vueOptions/>
+    <vueComposition/>
 </template>
 
 <script>
-    import vueOptions from './components/vueOptions.vue'
-
+    // import vueOptions from './components/vueOptions.vue'
+    import vueComposition from './components/vueComposition.vue'
+    // FIXME: 
     export default {
-        name: 'App',
         components: {
-            vueOptions
+            // vueOptions,
+            vueComposition
         }
     }
 </script>

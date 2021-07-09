@@ -30,49 +30,58 @@
 </template>
 
 <script>
-    // TODO: 
-    // USE watcher for stoping add some words
+    import { ref, computed, watch } from "vue"
     export default {
-        name: "vueOptions",
-        data () {
-            return {
-                newItem: "",
-                items: [
-                    {
-                        value: "One",
-                        count: 1
-                    },
-                    {
-                        value: "Two",
-                        count: 1
-                    },
-                    {
-                        value: "bla bla",
-                        count: 1
-                    }
-                ]
-
-            }
-        },
-        computed: {
-            getItemsCount () {
-                return this.items.length;
-            }
-        },
-        methods: {
-            addItem () {
-                // TODO: 
-                // Do verification on Lowercase and add values on Capitalize
-                if(this.items.some(item => item.value === this.newItem)){
-                    let indexNewItem = this.items.findIndex(item => item.value === this.newItem)
-                    this.items[indexNewItem].count++
-                }else{
-                    this.items.push({value: this.newItem, count: 1})
+        setup () {
+            let newItem = ref("")
+            let items = ref([
+                {
+                    value: "One",
+                    count: 1
+                },
+                {
+                    value: "Two",
+                    count: 1
+                },
+                {
+                    value: "Three",
+                    count: 1
                 }
-                this.newItem = ""; 
-            },
-            deleteItem (index) {
-                this.items.splice(index, 1)
+            ])
+            let addItem = () => {
+                if(items.value.some(item => item.value === newItem.value)){
+                    let indexNewItem = items.value.findIndex(item => item.value === newItem.value)
+                    items.value[indexNewItem].count++
+                }else{
+                    items.value.push({value: newItem.value, count: 1})
+                }
+                newItem.value = ""; 
+            }
+            let deleteItem = (index) => {
+                items.value.splice(index, 1)
+            }
+
+            let getItemsCount = computed(() => {
+                return items.value.length
+            })
+
+            watch(newItem, (newValue) => {
+                if(newValue === "dogs are better than cats"){
+                    alert("shut up")
+                }
+            })
+
+            return {
+                // Data
+                newItem,
+                items,
+
+                // Methods
+                addItem,
+                deleteItem,
+
+                // Computed
+                getItemsCount,
             }
         }
     }
